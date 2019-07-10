@@ -1,0 +1,78 @@
+ul li {
+    list-style: none;
+}
+
+.addTransaction {
+    color: white;
+    background-color: rgb(0, 110, 144);
+    border: none;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    height: 35px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.transactionHistoryContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.transactionBorder ul {
+    padding: 0px;
+}
+
+.transactionBorder {
+    display: grid;
+    justify-items: center;
+    height: 140px;
+    width: 21.44em;
+    /* 375px; */
+    border: 1px solid black;
+    border-radius: 6px;
+    margin-bottom: 14px;
+}
+
+.transactionBorder:nth-child(even) {
+    border: 1px solid rgb(28, 130, 254);
+    border-radius: 6px;
+}
+
+.deleteButton {
+    width: 24%;
+    background-color: ghostwhite;
+    border: 1px solid gray;
+    height: 25px;
+}
+
+.deleteButton:hover {
+    background-color: rgb(237, 81, 83);
+    color: white;
+    border: 1px solid rgb(237, 81, 83);
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 0.1fr 2fr;
+    border: 1px solid black;
+    width: 21.44em;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    height: 140px;
+}
+
+.sideCard {
+    width: 10px;
+    background-color:rgb(0, 110, 144);
+    margin-right: 0px;
+    margin-left: 10px;
+    margin-bottom: 16px;
+}
+.sideCard2 {
+    width: 10px;
+    background-color:rgb(28, 112, 58);
+    margin-right: 0px;
+    margin-left: 10px;
+    margin-bottom: 16px;
+}
