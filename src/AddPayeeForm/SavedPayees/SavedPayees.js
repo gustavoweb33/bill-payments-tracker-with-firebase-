@@ -4,11 +4,12 @@ import DisplayTransactions from './DisplayTransactions/DisplayTransactions';
 // import Modal from '../Modal/Modal';
 import style from './SavedPayees.module.css'
 import * as firebase from 'firebase';
+import { FaEye, FaEyeSlash, FaTrash } from "react-icons/fa";
 
 
 class AddPayee extends Component {
     state = {
-        payees: []
+        payees: [],
     }
     async componentDidMount() {
         const ref = firebase.database().ref( 'payees' );
@@ -36,7 +37,10 @@ class AddPayee extends Component {
                 for ( let key in payments[ i ] ) {
                     fetchedPayees[ i ].payments.push( { ...payments[ i ][ key ], id: key } )
                 }
+                //adding new property to each payee so they are hidden until the user clicks the show button
+                fetchedPayees[ i ].showTransactions = false;
             }
+
             this.setState( { payees: fetchedPayees } );
 
         } );
@@ -50,16 +54,6 @@ class AddPayee extends Component {
         child.update( { accountNumber: 949493030030 } );
     }
 
-    // addTransaction = ( transaction, payeeId, index ) => {
-    //     const payees = [ ...this.state.payees ]; //copy of the state
-    //     let payeeIndex = payees[ index ];    //the state index from the copy to add new transactions
-
-    //     payeeIndex.payments.push( transaction );
-    //     payees[ index ] = payeeIndex;
-
-    //     this.setState( { payees: payees } );
-    // }
-
     deletePayee = ( payeeId ) => {
         const deletePayee = window.confirm( 'Delete selected payee?' );
         if ( deletePayee ) {
@@ -70,7 +64,6 @@ class AddPayee extends Component {
     }
 
     deleteTransaction = ( payeeId, paymentId ) => {
-        console.log( payeeId, paymentId )
         const ref = firebase.database().ref( 'payees/' + payeeId + '/payments/' + paymentId );
         ref.remove()
             .then( function () {
@@ -79,6 +72,14 @@ class AddPayee extends Component {
             .catch( function ( error ) {
                 console.log( "Remove failed: " + error.message )
             } );
+    }
+
+    showTransactions = ( payeeId, index, boolean ) => {
+        const payees = [ ...this.state.payees ]
+        if ( payees[ index ].id === payeeId ) {
+            payees[ index ].showTransactions = boolean;
+        }
+        this.setState( { payees: payees } )
     }
 
     render() {
@@ -93,17 +94,30 @@ class AddPayee extends Component {
                                     <h4>{ payee.name }</h4>
                                     <p>{ payee.accountNumber }</p>
                                     <p>{ payee.zipCode }</p>
-                                    <button onClick={ () => this.deletePayee( payee.id ) }>Delete</button>
+                                    <div>
+                                        <button onClick={ () => this.showTransactions( payee.id, index, true ) }><FaEye className={ style.icon } /></button>
+                                        <button onClick={ () => this.showTransactions( payee.id, index, false ) }><FaEyeSlash /></button>
+                                        <button onClick={ () => this.deletePayee( payee.id ) }><FaTrash /></button>
+                                    </div>
+
                                 </div>
-                                {
-                                    this.state.payees[ index ].length === 0
-                                        ? null
-                                        : <DisplayTransactions
-                                            payeeId={ this.state.payees[ index ].id }
-                                            transactionHistory={ this.state.payees[ index ].payments }
-                                            deleteTransaction={ this.deleteTransaction }
-                                        />
-                                }
+
+
+                                <div >
+                                    {
+
+                                        this.state.payees[ index ].showTransactions ?
+                                            <DisplayTransactions
+                                                payeeId={ this.state.payees[ index ].id }
+                                                transactionHistory={ this.state.payees[ index ].payments }
+                                                deleteTransaction={ this.deleteTransaction }
+                                            />
+                                            : null
+                                    }
+                                </div>
+
+
+
                             </div>
                         )
                     } )
