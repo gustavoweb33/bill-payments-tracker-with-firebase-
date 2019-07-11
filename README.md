@@ -1,3 +1,8 @@
+A react app that uses google's firebase as its database.
+By adding a payee like a car payment, the user will then be able to enter transactional data under that payee. This allows them to look at their transactional history.
+With firebase as the database the user's data will be updated in real time.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
