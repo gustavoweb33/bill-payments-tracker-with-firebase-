@@ -10,9 +10,9 @@ input:focus {
     outline-width: 0;
 }
 
+
 .addPayeeLabel {
     margin-right: 14px;
-    color: rgb(65, 187, 217);
     font-weight: bold;
     font-size: 22px;
 }

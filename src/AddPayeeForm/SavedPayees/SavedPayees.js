@@ -39,8 +39,9 @@ class AddPayee extends Component {
                 }
                 //adding new property to each payee so they are hidden until the user clicks the show button
                 fetchedPayees[ i ].showTransactions = false;
+                fetchedPayees[i].accountNumber = fetchedPayees[i].accountNumber.toUpperCase()
+                fetchedPayees[i].name = fetchedPayees[i].name.toUpperCase()
             }
-
             this.setState( { payees: fetchedPayees } );
 
         } );
@@ -86,50 +87,46 @@ class AddPayee extends Component {
         return (
             <div>
                 <AddPayeeForm addItem={ this.addItem } payees={ this.state.payees } />
-                { this.state.payees.length === 0 ? <h2>...Loading</h2> :
-                    this.state.payees.map( ( payee, index ) => {
-                        return (
-                            <div key={ payee.id } className={ style.payeesAndTransactions }>
-                                <div className={ style.savedPayessContainer }>
-                                    <h4>{ payee.name }</h4>
-                                    <p>{ payee.accountNumber }</p>
-                                    <p>{ payee.zipCode }</p>
-                                    <div>
-                                        <button onClick={ () => this.showTransactions( payee.id, index, true ) }><FaEye className={ style.icon } /></button>
-                                        <button onClick={ () => this.showTransactions( payee.id, index, false ) }><FaEyeSlash /></button>
-                                        <button onClick={ () => this.deletePayee( payee.id ) }><FaTrash /></button>
+                {
+                    this.state.payees.length === 0 ? <h2>...Loading</h2> :
+                        this.state.payees.map( ( payee, index ) => {
+
+                            return (
+                                <div key={ payee.id } className={ style.payeesAndTransactions }>
+                                    <div className={ style.savedPayessContainer }>
+                                        <h4 style={ { 'width': '30%' } }>{ payee.name }</h4>
+                                        <p style={ { 'width': '30%' } }>{ payee.accountNumber }</p>
+                                        <p style={ { 'width': '10%' } }>{ payee.zipCode }</p>
+
+
+                                        <div className={ style.icons }>
+                                            <button onClick={ () => this.showTransactions( payee.id, index, true ) }><FaEye className={ style.icon } />
+                                            </button>
+                                            <button onClick={ () => this.showTransactions( payee.id, index, false ) }><FaEyeSlash className={ style.icon } /></button>
+                                            <button onClick={ () => this.deletePayee( payee.id ) }><FaTrash className={ style.icon } />
+                                            </button>
+                                        </div>
                                     </div>
 
+
+                                    <div >
+                                        {
+                                            this.state.payees[ index ].showTransactions ?
+                                                <DisplayTransactions
+                                                    payeeId={ this.state.payees[ index ].id }
+                                                    transactionHistory={ this.state.payees[ index ].payments }
+                                                    deleteTransaction={ this.deleteTransaction }
+                                                />
+                                                : null
+                                        }
+                                    </div>
                                 </div>
-
-
-                                <div >
-                                    {
-
-                                        this.state.payees[ index ].showTransactions ?
-                                            <DisplayTransactions
-                                                payeeId={ this.state.payees[ index ].id }
-                                                transactionHistory={ this.state.payees[ index ].payments }
-                                                deleteTransaction={ this.deleteTransaction }
-                                            />
-                                            : null
-                                    }
-                                </div>
-
-
-
-                            </div>
-                        )
-                    } )
-
-
+                            )
+                        } )
                 }
             </div>
-
-
         )
     }
-
 }
 
 export default AddPayee;
