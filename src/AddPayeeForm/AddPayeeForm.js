@@ -78,8 +78,8 @@ class PayeeForm extends Component {
 				<h2 style={ { textAlign: 'center' } }>Bill Payments Tracker</h2>
 				<div>
 					<form onSubmit={ this.handleSubmit } className={ style.addPayeeForm }>
-						<label htmlFor='name' className={ `${ style.addPayeeLabel } ` }>Payee</label>
-						<input
+						<label htmlFor='name' className={ style.addPayeeLabel }>Payee</label>
+						<input className={style.mainInput}
 							type='text' id='name' name='name'
 							minLength='5' maxLength='30' required
 							size='30' value={ this.state.payees.name } onChange={ this.handleChange }
@@ -90,7 +90,7 @@ class PayeeForm extends Component {
 
 
 						<label htmlFor='accountNumber' className={ `${ style.addPayeeLabel }  ${ style.accountNumber }` }>Account Number</label>
-						<input
+						<input className={`${style.mainInput} ${style.accountNumberInput}` }
 							type='text' id='accountNumber' name='accountNumber'
 							minLength='8' maxLength='16' required
 							value={ this.state.payees.accountNumber } onChange={ this.handleChange }
@@ -104,7 +104,7 @@ class PayeeForm extends Component {
 
 
 						<label htmlFor='zipCode' className={ ` ${ style.addPayeeLabel } ${ style.zipCode } ` } >Zip Code</label>
-						<input
+						<input className={`${style.mainInput} ${style.zipCodeInput}`}
 							type='text' id='zipCode' name='zipCode'
 							minLength='5' maxLength='10' required
 							value={ this.state.payees.zipCode } onChange={ this.handleChange }
