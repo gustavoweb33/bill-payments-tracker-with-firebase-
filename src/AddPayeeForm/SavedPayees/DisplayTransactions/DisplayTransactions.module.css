@@ -32,6 +32,7 @@ ul li {
     box-shadow: 0px 0px 4px rgb(76, 185, 68);
     border-radius: 6px;
     margin-bottom: 14px;
+    margin-left: 20px;
 }
 
 .transactionBorder:nth-child(even) {

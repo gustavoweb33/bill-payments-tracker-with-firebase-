@@ -1,6 +1,10 @@
 :root {
     --main-border-style: 1px solid gray;
 }
+.mainContainer {
+    margin-left: 20px;
+    margin-right: 20px;
+}
 
 .mainInput {
     border-top: var(--main-border-style);
@@ -89,7 +93,95 @@ input:focus {
     font-weight: 700;
 }
 
-@media(max-width: 740px) {
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+
+    .addPayeeForm {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(10, 1fr);
+        height: 600px;
+        padding-left: 20px;
+    }
+    .payeeInput {
+        grid-column-start: 1;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+    .accountNumber {
+        grid-column-start: 1;
+        grid-row-start: 4;
+    }
+    .accountNumberInput {
+        grid-column-start: 1;
+        grid-row-start: 5;
+    }
+    .duplicateAccountWarning {
+        grid-column-start: 1;
+        grid-row-start: 6;
+    }
+    .zipCode {
+        grid-column-start: 1;
+        grid-row-start: 7;
+    }
+    .zipCodeInput {
+        grid-column-start: 1;
+        grid-row-start: 8;
+    }
+    .validZipCode {
+        grid-column-start: 1;
+        grid-row-start: 9;
+    }
+    .payeeButton {
+        grid-column-start: 1;
+        grid-row-start: 10;
+    }
+    
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .addPayeeForm {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(10, 1fr);
+        height: 600px;
+        padding-left: 20px;
+    }
+    .payeeInput {
+        grid-column-start: 1;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+    .accountNumber {
+        grid-column-start: 1;
+        grid-row-start: 4;
+    }
+    .accountNumberInput {
+        grid-column-start: 1;
+        grid-row-start: 5;
+    }
+    .duplicateAccountWarning {
+        grid-column-start: 1;
+        grid-row-start: 6;
+    }
+    .zipCode {
+        grid-column-start: 1;
+        grid-row-start: 7;
+    }
+    .zipCodeInput {
+        grid-column-start: 1;
+        grid-row-start: 8;
+    }
+    .validZipCode {
+        grid-column-start: 1;
+        grid-row-start: 9;
+    }
+    .payeeButton {
+        grid-column-start: 1;
+        grid-row-start: 10;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
     .addPayeeForm {
         display: grid;
         grid-template-columns: 1fr 1fr;

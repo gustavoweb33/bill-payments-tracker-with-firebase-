@@ -39,8 +39,8 @@ class AddPayee extends Component {
                 }
                 //adding new property to each payee so they are hidden until the user clicks the show button
                 fetchedPayees[ i ].showTransactions = false;
-                fetchedPayees[i].accountNumber = fetchedPayees[i].accountNumber.toUpperCase()
-                fetchedPayees[i].name = fetchedPayees[i].name.toUpperCase()
+                fetchedPayees[ i ].accountNumber = fetchedPayees[ i ].accountNumber.toUpperCase()
+                fetchedPayees[ i ].name = fetchedPayees[ i ].name.toUpperCase()
             }
             this.setState( { payees: fetchedPayees } );
 
@@ -94,9 +94,9 @@ class AddPayee extends Component {
                             return (
                                 <div key={ payee.id } className={ style.payeesAndTransactions }>
                                     <div className={ style.savedPayessContainer }>
-                                        <h4 style={ { 'width': '30%' } }>{ payee.name }</h4>
-                                        <p style={ { 'width': '30%' } }>{ payee.accountNumber }</p>
-                                        <p style={ { 'width': '10%' } }>{ payee.zipCode }</p>
+                                        <h4 className={ style.containerTitle }>{ payee.name }</h4>
+                                        <p className={ style.containerParaOne }>{ payee.accountNumber }</p>
+                                        <p className={ style.containerParaTwo }>{ payee.zipCode }</p>
 
 
                                         <div className={ style.icons }>

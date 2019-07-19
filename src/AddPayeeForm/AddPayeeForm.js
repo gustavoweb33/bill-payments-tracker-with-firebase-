@@ -76,10 +76,10 @@ class PayeeForm extends Component {
 		return (
 			<div>
 				<h2 style={ { textAlign: 'center' } }>Bill Payments Tracker</h2>
-				<div>
+				<div className={style.mainContainer}>
 					<form onSubmit={ this.handleSubmit } className={ style.addPayeeForm }>
 						<label htmlFor='name' className={ style.addPayeeLabel }>Payee</label>
-						<input className={style.mainInput}
+						<input className={`${style.mainInput} ${style.payeeInput}`}
 							type='text' id='name' name='name'
 							minLength='5' maxLength='30' required
 							size='30' value={ this.state.payees.name } onChange={ this.handleChange }
