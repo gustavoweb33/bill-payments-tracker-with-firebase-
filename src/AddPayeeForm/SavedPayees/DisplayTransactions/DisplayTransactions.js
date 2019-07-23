@@ -16,9 +16,18 @@ const DisplayPayments = ( { transactionHistory, payeeId, deleteTransaction } ) =
 
         <div className={ style.payeesAndTransactions }>
 
-            <div style={ { height: '200px' } }>
-                { history }
-                <button className={ style.addTransaction } onClick={ () => { setDisplay( !displayForm ) } }>Add Transaction</button>
+            <div>
+                <div className={ style.topContainer }>
+
+                    { history }
+
+                    <button className={ style.addTransaction }
+                        onClick={ () => { setDisplay( !displayForm ) } }>
+                        Add Transaction
+                    </button>
+
+                </div>
+
                 {
                     displayForm ?
                         <AddTransaction
@@ -36,9 +45,9 @@ const DisplayPayments = ( { transactionHistory, payeeId, deleteTransaction } ) =
                             <div key={ payment.referenceNumber } className={ style.transactionBorder } >
                                 <ul>
                                     <li>
-                                        <span style={ { fontWeight: 'bold' } }>Reference Number:</span> { payment.referenceNumber }
+                                        <span style={ { fontWeight: 'bold' } }>Reference Number:</span> { payment.referenceNumber.toUpperCase() }
                                         <button className={ style.deleteTransaction } onClick={ () => deleteTransaction( payeeId, payment.id ) }>
-                                            <FaTrash className={style.hover}/>
+                                            <FaTrash className={ style.hover } />
                                         </button>
                                         <hr />
                                     </li>

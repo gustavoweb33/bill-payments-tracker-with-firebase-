@@ -81,7 +81,7 @@ class AddTransaction extends Component {
                 <label className={ style.transactionLabel } htmlFor='refNum'> Reference Number: </label>
                 <input
                     type='text' id='refNum' name='referenceNumber'
-                    required minLength='5' maxLength='20' className={ style.transactionInput }
+                    required minLength='5' maxLength='20' className={ style.referenceNumberInput }
                     value={ this.state.referenceNumber } onChange={ this.handleChange } />
                 {
                     this.duplicateReferenceNums() ? '' :
@@ -92,7 +92,7 @@ class AddTransaction extends Component {
                 <input
                     type='text' id='tranAmmount' name='ammount'
                     required minLength='1' maxLength='10' className={ style.ammountInput }
-                    value={ this.state.ammount } onChange={ this.handleChange } />
+                    placeholder='100.00' value={ this.state.ammount } onChange={ this.handleChange } />
 
                 <label className={ style.dateTitle } htmlFor='tranDate'> Date: </label>
                 <input

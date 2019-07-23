@@ -4,44 +4,60 @@
 }
 
 .addTransactionForm {
-    display: grid;
+    /* display: grid;
     gap: 5px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 20px; */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 50px;
+    margin-bottom: 70px;
 }
 
-.transactionInput {
-    width: 95%;
+
+.referenceNumberInput {
+    width: 20%;
 }
 
 
 .ammountTitle {
-    grid-row-start: 2;
-    grid-column-start: 1;
+    /* grid-row-start: 2;
+    grid-column-start: 1; */
+   
 }
 
 .ammountInput {
-    grid-row-start: 2;
+    /* grid-row-start: 2;
     grid-column-start: 2;
-    width: var(--input-width);
+    width: var(--input-width); */
+    width: 10%;
 }
 
 .dateTitle {
-    grid-row-start: 3;
-    grid-column-start: 1;
+    /* grid-row-start: 3;
+    grid-column-start: 1; */
+
+   
 }
 
 .dateInput {
-    grid-column-start: 2;
+    /* grid-column-start: 2;
     grid-row-start: 3;
-    width: var(--input-width);
+    width: var(--input-width); */
+    width: 16%;
 }
 
 /* .transactionLabel {
     margin-top: var(--transaction-margin);
 } */
+
+.referenceNumberInput, .ammountInput, .dateInput {
+    border: 0.5px solid black;
+}
 
 .duplicatesRefNums {
     font-size: small;
@@ -59,5 +75,49 @@
     background: rgb(76, 185, 68);
     height: 27px;
     width: 13%;
-    margin-top: 15px;
+    /* margin-top: 15px; */
 }
+
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+    .addTransactionForm {
+        display: grid;
+        gap: 8px;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(9, 1fr);
+    }
+    .referenceNumberInput {
+        grid-row-start: 2;
+        width: 40%;
+    }
+    .duplicatesRefNums {
+        grid-row-start: 3;
+        grid-column-start: 1;
+    }
+    .ammountTitle {
+        grid-row-start: 4;
+    }
+    .ammountInput {
+        grid-row-start: 5;
+        width: 22%;
+    }
+    .dateTitle {
+        grid-row-start: 6;
+    }
+    .dateInput {
+        grid-row-start: 7;
+        width: 30%;
+    }
+
+    .trasactionButton {
+        grid-row-start: 9;
+        width: 22%;
+    }
+}
+
+
+/* @media only screen and (min-width: 480px) and (max-width: 767px) {
+    .addTransactionForm {
+        display: grid;
+
+    }
+} */

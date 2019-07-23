@@ -76,10 +76,10 @@ class PayeeForm extends Component {
 		return (
 			<div>
 				<h2 style={ { textAlign: 'center' } }>Bill Payments Tracker</h2>
-				<div className={style.mainContainer}>
+				<div className={ style.mainContainer }>
 					<form onSubmit={ this.handleSubmit } className={ style.addPayeeForm }>
 						<label htmlFor='name' className={ style.addPayeeLabel }>Payee</label>
-						<input className={`${style.mainInput} ${style.payeeInput}`}
+						<input className={ `${ style.mainInput } ${ style.payeeInput }` }
 							type='text' id='name' name='name'
 							minLength='5' maxLength='30' required
 							size='30' value={ this.state.payees.name } onChange={ this.handleChange }
@@ -90,7 +90,7 @@ class PayeeForm extends Component {
 
 
 						<label htmlFor='accountNumber' className={ `${ style.addPayeeLabel }  ${ style.accountNumber }` }>Account Number</label>
-						<input className={`${style.mainInput} ${style.accountNumberInput}` }
+						<input className={ `${ style.mainInput } ${ style.accountNumberInput }` }
 							type='text' id='accountNumber' name='accountNumber'
 							minLength='8' maxLength='16' required
 							value={ this.state.payees.accountNumber } onChange={ this.handleChange }
@@ -104,13 +104,13 @@ class PayeeForm extends Component {
 
 
 						<label htmlFor='zipCode' className={ ` ${ style.addPayeeLabel } ${ style.zipCode } ` } >Zip Code</label>
-						<input className={`${style.mainInput} ${style.zipCodeInput}`}
+						<input className={ `${ style.mainInput } ${ style.zipCodeInput }` }
 							type='text' id='zipCode' name='zipCode'
-							minLength='5' maxLength='10' required
+							minLength='5' maxLength='10' required placeholder='e.g  12345 or 12345-0000 '
 							value={ this.state.payees.zipCode } onChange={ this.handleChange }
 						/>
 
-						<p className={ style.validZipCode }> Example: 12345 or 12345-0000</p>
+						{/* <p className={ style.validZipCode }> Example: 12345 or 12345-0000</p> */ }
 
 						<button className={ style.payeeButton }>ADD</button>
 					</form>
