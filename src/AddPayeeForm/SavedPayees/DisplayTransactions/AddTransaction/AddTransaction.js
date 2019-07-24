@@ -78,7 +78,7 @@ class AddTransaction extends Component {
     render() {
         return (
             <form onSubmit={ this.handleSubmit } className={ style.addTransactionForm }>
-                <label className={ style.transactionLabel } htmlFor='refNum'> Reference Number: </label>
+                <label className={ style.transactionTitle } htmlFor='refNum'> Reference Number: </label>
                 <input
                     type='text' id='refNum' name='referenceNumber'
                     required minLength='5' maxLength='20' className={ style.referenceNumberInput }

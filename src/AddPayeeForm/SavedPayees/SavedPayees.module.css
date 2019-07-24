@@ -23,6 +23,7 @@
  .icons {
      display: flex;
      align-items: center;
+     margin-bottom: 2px;
  }
 
  .icons button {
@@ -33,11 +34,14 @@
 
  .icon {
      font-size: 20px;
+   
  }
 
  .icon:hover {
      cursor: pointer;
  }
+
+
 
  @media only screen and (min-width: 320px) and (max-width: 479px) {
      .savedPayessContainer {
@@ -56,4 +60,13 @@
      .containerParaTwo {
          width: 10%;
      }
+ }
+
+ @media only screen and (min-width: 992px) {
+    .containerTitle, .containerParaOne {
+        width: 30%;
+    }
+    .containerParaTwo {
+        width: 10%;
+    }
  }

@@ -4,12 +4,6 @@
 }
 
 .addTransactionForm {
-    /* display: grid;
-    gap: 5px;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    align-items: center;
-    margin-bottom: 20px; */
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -18,17 +12,11 @@
     margin-bottom: 70px;
 }
 
-
 .referenceNumberInput {
     width: 20%;
 }
 
 
-.ammountTitle {
-    /* grid-row-start: 2;
-    grid-column-start: 1; */
-   
-}
 
 .ammountInput {
     /* grid-row-start: 2;
@@ -37,23 +25,13 @@
     width: 10%;
 }
 
-.dateTitle {
-    /* grid-row-start: 3;
-    grid-column-start: 1; */
 
-   
-}
 
 .dateInput {
-    /* grid-column-start: 2;
-    grid-row-start: 3;
-    width: var(--input-width); */
+  
     width: 16%;
 }
 
-/* .transactionLabel {
-    margin-top: var(--transaction-margin);
-} */
 
 .referenceNumberInput, .ammountInput, .dateInput {
     border: 0.5px solid black;
@@ -84,10 +62,11 @@
         gap: 8px;
         grid-template-columns: 1fr;
         grid-template-rows: repeat(9, 1fr);
+        justify-items: center;
     }
     .referenceNumberInput {
         grid-row-start: 2;
-        width: 40%;
+        width: 50%;
     }
     .duplicatesRefNums {
         grid-row-start: 3;
@@ -105,19 +84,41 @@
     }
     .dateInput {
         grid-row-start: 7;
-        width: 30%;
+        width: 40%;
     }
-
     .trasactionButton {
         grid-row-start: 9;
         width: 22%;
     }
 }
 
-
-/* @media only screen and (min-width: 480px) and (max-width: 767px) {
+@media only screen and (min-width: 480px) and (max-width: 767px) {
     .addTransactionForm {
         display: grid;
-
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(5, 1fr);
     }
-} */
+    .referenceNumberInput {
+        width: 50%;
+    }
+    .ammountInput {
+        width: 28%;
+    }
+    .dateTitle {
+        grid-row-start: 3;
+        margin-left: 50px;
+    }
+    .dateInput {
+        grid-column-start: 2;
+        grid-row-start: 3;
+        width: 50%;
+    }
+    .trasactionButton {
+        grid-row-start: 4;
+        margin-left: 50%;
+        width: 22%;
+    }
+    .transactionTitle, .ammountTitle, .dateTitle {
+        margin-left: 50%;
+    }
+}
