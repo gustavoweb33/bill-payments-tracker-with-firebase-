@@ -100,9 +100,14 @@ class AddPayee extends Component {
 
 
                                         <div className={ style.icons }>
-                                            <button onClick={ () => this.showTransactions( payee.id, index, true ) }><FaEye className={ style.icon } />
+                                            <button onClick={ () => this.showTransactions( payee.id, index, true ) } className={ style.tooltip }>
+                                                <span className={ style.tooltiptext }>View Transaction</span><FaEye className={ style.icon } />
                                             </button>
-                                            <button onClick={ () => this.showTransactions( payee.id, index, false ) }><FaEyeSlash className={ style.icon } /></button>
+
+                                            <button onClick={ () => this.showTransactions( payee.id, index, false ) } className={ style.tooltip }>
+                                            <span className={ style.tooltiptext }>Hide Transaction</span><FaEyeSlash className={ style.icon } />
+                                            </button>
+
                                             <button onClick={ () => this.deletePayee( payee.id ) }><FaTrash className={ style.icon } />
                                             </button>
                                         </div>
