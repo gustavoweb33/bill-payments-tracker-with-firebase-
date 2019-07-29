@@ -43,12 +43,12 @@ class AddPayee extends Component {
                 fetchedPayees[ i ].name = fetchedPayees[ i ].name.toUpperCase()
             }
             this.setState( { payees: fetchedPayees } );
-
         } );
 
 
     }
 
+    //test method
     update = () => {
         let ref = firebase.database().ref( 'payees' );
         const child = ref.child( '000000000013' );
@@ -83,6 +83,7 @@ class AddPayee extends Component {
         this.setState( { payees: payees } )
     }
 
+
     render() {
         return (
             <div>
@@ -105,7 +106,7 @@ class AddPayee extends Component {
                                             </button>
 
                                             <button onClick={ () => this.showTransactions( payee.id, index, false ) } className={ style.tooltip }>
-                                            <span className={ style.tooltiptext }>Hide Transaction</span><FaEyeSlash className={ style.icon } />
+                                                <span className={ style.tooltiptext }>Hide Transaction</span><FaEyeSlash className={ style.icon } />
                                             </button>
 
                                             <button onClick={ () => this.deletePayee( payee.id ) }><FaTrash className={ style.icon } />

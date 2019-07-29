@@ -45,10 +45,15 @@ const DisplayPayments = ( { transactionHistory, payeeId, deleteTransaction } ) =
                             <div key={ payment.referenceNumber } className={ style.transactionBorder } >
                                 <ul>
                                     <li>
-                                        <span style={ { fontWeight: 'bold' } }>Reference Number:</span> { payment.referenceNumber.toUpperCase() }
-                                        <button className={ style.deleteTransaction } onClick={ () => deleteTransaction( payeeId, payment.id ) }>
+                                        <span style={ { fontWeight: 'bold' } }>Reference Number:</span>
+                                        { payment.referenceNumber }
+
+                                        <button
+                                            className={ style.deleteTransaction }
+                                            onClick={ () => deleteTransaction( payeeId, payment.id ) }>
                                             <FaTrash className={ style.hover } />
                                         </button>
+
                                         <hr />
                                     </li>
 

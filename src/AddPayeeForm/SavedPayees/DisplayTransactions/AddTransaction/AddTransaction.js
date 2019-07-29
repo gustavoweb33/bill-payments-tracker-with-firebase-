@@ -10,7 +10,7 @@ class AddTransaction extends Component {
         date: ''
     }
 
-    duplicateReferenceNums = () => {
+    noDuplicateReferenceNums = () => {
         const transaction = { ...this.state }
         const transactionHistory = this.props.transactionHistory;
         for ( let i = 0; i < transactionHistory.length; i++ ) {
@@ -23,8 +23,8 @@ class AddTransaction extends Component {
 
     transactionFormat = () => {
         const transaction = { ...this.state }
-        const duplicatesRefNums = this.duplicateReferenceNums()
-        if ( !duplicatesRefNums ) return false;
+        const noDuplicatesRefNums = this.noDuplicateReferenceNums()
+        if ( !noDuplicatesRefNums ) return false;
 
         //handle the ammount format
         transaction.ammount = Number( transaction.ammount ).toFixed( 2 );   //ammount is a string by default 
@@ -39,7 +39,6 @@ class AddTransaction extends Component {
 
         const mmddyyyy = `${ date.getMonth() + 1 }/${ date.getDate() }/${ date.getFullYear() }`
         transaction.date = mmddyyyy;
-
         return transaction;
     }
 
@@ -61,9 +60,9 @@ class AddTransaction extends Component {
             //EXAMPLE
             const payeeId = this.props.payeeId;
             const payment = {
-                referenceNumber: this.state.referenceNumber,
-                ammount: this.state.ammount,
-                date: this.state.date
+                referenceNumber: isValidTransaction.referenceNumber,
+                ammount: isValidTransaction.ammount,
+                date: isValidTransaction.date
             }
             let refs = firebase.database().ref( 'payees/' + payeeId + '/payments' );
             refs.push( payment )
@@ -74,7 +73,7 @@ class AddTransaction extends Component {
 
 
     }
-    
+
     render() {
         return (
             <form onSubmit={ this.handleSubmit } className={ style.addTransactionForm }>
@@ -84,7 +83,7 @@ class AddTransaction extends Component {
                     required minLength='5' maxLength='20' className={ style.referenceNumberInput }
                     value={ this.state.referenceNumber } onChange={ this.handleChange } />
                 {
-                    this.duplicateReferenceNums() ? '' :
+                    this.noDuplicateReferenceNums() ? '' :
                         <p className={ style.duplicatesRefNums }> Reference number already exists </p>
                 }
 
