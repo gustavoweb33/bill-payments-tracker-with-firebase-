@@ -10,9 +10,15 @@ import { FaEye, FaEyeSlash, FaTrash } from "react-icons/fa";
 class AddPayee extends Component {
     state = {
         payees: [],
+        numberOfPayees: 5
     }
     async componentDidMount() {
-        const ref = firebase.database().ref( 'payees' );
+        this.renderPayees(this.state.numberOfPayees);
+
+    }
+
+    renderPayees = (numberOfPayees) => {
+        const ref = firebase.database().ref( 'payees' ).limitToFirst( numberOfPayees );
 
         ref.on( 'value', ( snapshot ) => {
             const state = snapshot.val();
@@ -83,8 +89,16 @@ class AddPayee extends Component {
         this.setState( { payees: payees } )
     }
 
-
+    loadMorePayees = ( num ) => {
+        this.setState( ( prevState ) => {
+            return { numberOfPayees: prevState.numberOfPayees + num }
+        } )
+        this.renderPayees(this.state.numberOfPayees)
+        
+    }
+ 
     render() {
+      
         return (
             <div>
                 <AddPayeeForm addItem={ this.addItem } payees={ this.state.payees } />
@@ -130,6 +144,7 @@ class AddPayee extends Component {
                             )
                         } )
                 }
+                <button onClick={ () => { this.loadMorePayees( 3 ) } }>Load more</button>
             </div>
         )
     }
