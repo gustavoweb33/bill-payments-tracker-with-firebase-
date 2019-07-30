@@ -1,12 +1,11 @@
- /* setting a set heigth results in overlap of the two divs when transaction button is clicked */
 
- /* solutions 1: make the inputs into inline tags and remove the block format */
-
- /* solutions 2: make the div big enough to fit the inputs after the button is cliked */
+.border {
+   border:  0.1px solid rgba(45, 48, 71, 0.2);
+   width: initial;
+}
 
  .payeesAndTransactions {
      box-shadow: 0px 0px 6px rgb(221, 219, 219);
-     /* height: 265px; */
      width: 90%;
      margin-left: 5%;
      margin-right: 20px;

@@ -13,11 +13,11 @@ class AddPayee extends Component {
         numberOfPayees: 5
     }
     async componentDidMount() {
-        this.renderPayees(this.state.numberOfPayees);
+        this.renderPayees( this.state.numberOfPayees );
 
     }
 
-    renderPayees = (numberOfPayees) => {
+    renderPayees = ( numberOfPayees ) => {
         const ref = firebase.database().ref( 'payees' ).limitToFirst( numberOfPayees );
 
         ref.on( 'value', ( snapshot ) => {
@@ -90,15 +90,16 @@ class AddPayee extends Component {
     }
 
     loadMorePayees = ( num ) => {
-        this.setState( ( prevState ) => {
-            return { numberOfPayees: prevState.numberOfPayees + num }
-        } )
-        this.renderPayees(this.state.numberOfPayees)
-        
+
+        this.setState( ( prevState ) => ( {
+            numberOfPayees: prevState.numberOfPayees + num
+        } ) );
+
+        this.renderPayees( this.state.numberOfPayees )
     }
- 
+
     render() {
-      
+
         return (
             <div>
                 <AddPayeeForm addItem={ this.addItem } payees={ this.state.payees } />
@@ -129,7 +130,7 @@ class AddPayee extends Component {
                                     </div>
 
 
-                                    <div >
+                                    <div className={ style.border }>
                                         {
                                             this.state.payees[ index ].showTransactions ?
                                                 <DisplayTransactions

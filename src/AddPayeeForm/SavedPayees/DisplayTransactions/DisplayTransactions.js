@@ -51,7 +51,7 @@ const DisplayPayments = ( { transactionHistory, payeeId, deleteTransaction } ) =
                                         <button
                                             className={ style.deleteTransaction }
                                             onClick={ () => deleteTransaction( payeeId, payment.id ) }>
-                                            <FaTrash className={ style.hover } />
+                                            <FaTrash className={ style.trashIcon } />
                                         </button>
 
                                         <hr />
