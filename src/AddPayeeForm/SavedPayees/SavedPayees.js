@@ -17,6 +17,11 @@ class AddPayee extends Component {
 
     }
 
+    componentDidUpdate() {
+        console.log( 'component updated' )
+        console.log( this.state.numberOfPayees )
+    }
+
     renderPayees = ( numberOfPayees ) => {
         const ref = firebase.database().ref( 'payees' ).limitToFirst( numberOfPayees );
 
@@ -89,13 +94,12 @@ class AddPayee extends Component {
         this.setState( { payees: payees } )
     }
 
-    loadMorePayees = ( num ) => {
-
+    loadMorePayees = () => {
         this.setState( ( prevState ) => ( {
-            numberOfPayees: prevState.numberOfPayees + num
-        } ) );
+            numberOfPayees: prevState.numberOfPayees + 3
+        } ), () => { this.renderPayees( this.state.numberOfPayees ) } );
 
-        this.renderPayees( this.state.numberOfPayees )
+
     }
 
     render() {
@@ -145,7 +149,10 @@ class AddPayee extends Component {
                             )
                         } )
                 }
-                <button onClick={ () => { this.loadMorePayees( 3 ) } }>Load more</button>
+                <div className={ style.loadMoreContainer }>
+                    <button onClick={ () => { this.loadMorePayees() } } className={ style.loadMoreButton }>Load more</button>
+                </div>
+
             </div>
         )
     }
