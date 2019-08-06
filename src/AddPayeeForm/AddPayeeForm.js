@@ -55,8 +55,6 @@ class PayeeForm extends Component {
 			} )
 		}
 
-		else console.log( 'invalid input field' );
-
 	}
 
 	handleChange = ( event ) => {

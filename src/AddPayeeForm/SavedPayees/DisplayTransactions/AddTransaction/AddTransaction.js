@@ -54,24 +54,21 @@ class AddTransaction extends Component {
         const isValidTransaction = this.transactionFormat();
 
         if ( isValidTransaction ) {
-            //push() -> add to the existing data. does not delete
-            //get referEnce to payees/id/payments and push to it
-
-            //EXAMPLE
             const payeeId = this.props.payeeId;
             const payment = {
                 referenceNumber: isValidTransaction.referenceNumber,
                 ammount: isValidTransaction.ammount,
                 date: isValidTransaction.date
             }
+            //get referEnce to payees/id/payments and push to it
             let refs = firebase.database().ref( 'payees/' + payeeId + '/payments' );
+            //push() -> add to the existing data. does not delete
             refs.push( payment )
             this.setState( { referenceNumber: '', ammount: '', date: '' } )
 
         }
         else console.log( 'not a valid transaction' );
-
-
+        
     }
 
     render() {

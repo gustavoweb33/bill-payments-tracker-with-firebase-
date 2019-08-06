@@ -41,6 +41,11 @@ const DisplayPayments = ( { transactionHistory, payeeId, deleteTransaction } ) =
             <div className={ style.transactionHistoryContainer }>
                 {
                     transactionHistory.map( payment => {
+                        let paymentAmount = payment.ammount.toString( 10 )
+                        if ( !paymentAmount.includes( '.' ) ) {
+                            paymentAmount = `${ paymentAmount }.00`
+                        }
+
                         return (
                             <div key={ payment.referenceNumber } className={ style.transactionBorder } >
                                 <ul>
@@ -58,7 +63,7 @@ const DisplayPayments = ( { transactionHistory, payeeId, deleteTransaction } ) =
                                     </li>
 
                                     <li>
-                                        <span style={ { fontWeight: 'bold' } }> Ammount:</span> { payment.ammount }
+                                        <span style={ { fontWeight: 'bold' } }> Ammount:</span> { paymentAmount }
                                     </li>
 
                                     <li>

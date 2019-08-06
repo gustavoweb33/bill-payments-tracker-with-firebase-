@@ -42,7 +42,7 @@ class AddPayee extends Component {
 
             //place the payments array back into the corresponding fetchPayees array.
 
-            //this works but uses nested loops. refactor
+            //this works but uses nested loops.
             for ( let i = 0; i < fetchedPayees.length; i++ ) {
                 fetchedPayees[ i ].payments = [];
                 for ( let key in payments[ i ] ) {
