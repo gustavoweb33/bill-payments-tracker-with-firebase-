@@ -13,14 +13,11 @@ class AddPayee extends Component {
         numberOfPayees: 5
     }
     async componentDidMount() {
+        //the default number of payees (5) is passed from the state to the method and retrived from Firebase
         this.renderPayees( this.state.numberOfPayees );
 
     }
 
-    componentDidUpdate() {
-        console.log( 'component updated' )
-        console.log( this.state.numberOfPayees )
-    }
 
     renderPayees = ( numberOfPayees ) => {
         const ref = firebase.database().ref( 'payees' ).limitToFirst( numberOfPayees );

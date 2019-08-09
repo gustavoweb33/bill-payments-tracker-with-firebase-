@@ -15,6 +15,7 @@ class PayeeForm extends Component {
 	}
 
 	isValidAccountNum = () => {
+		//checking for any duplicate account numbers
 		for ( let i = 0; i < this.props.payees.length; i++ ) {
 			if ( this.props.payees[ i ].accountNumber === this.state.payees.accountNumber ) {
 				return false;
@@ -107,9 +108,6 @@ class PayeeForm extends Component {
 							minLength='5' maxLength='10' required placeholder='e.g  12345 or 12345-0000 '
 							value={ this.state.payees.zipCode } onChange={ this.handleChange }
 						/>
-
-						{/* <p className={ style.validZipCode }> Example: 12345 or 12345-0000</p> */ }
-
 						<button className={ style.payeeButton }>ADD</button>
 					</form>
 				</div>

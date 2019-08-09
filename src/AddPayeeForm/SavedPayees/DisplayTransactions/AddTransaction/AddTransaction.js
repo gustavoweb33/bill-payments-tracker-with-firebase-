@@ -27,7 +27,7 @@ class AddTransaction extends Component {
         if ( !noDuplicatesRefNums ) return false;
 
         //handle the ammount format
-        transaction.ammount = Number( transaction.ammount ).toFixed( 2 );   //ammount is a string by default 
+        transaction.ammount = Number( transaction.ammount ).toFixed( 2 );   //ammount is a string by default
         transaction.ammount = Number( transaction.ammount );  //convert back to a number b/c toFixed returns a string
         transaction.referenceNumber = transaction.referenceNumber.toUpperCase();
         if ( typeof transaction.ammount !== 'number' || ( transaction.ammount / 1 ) !== transaction.ammount ) return false;

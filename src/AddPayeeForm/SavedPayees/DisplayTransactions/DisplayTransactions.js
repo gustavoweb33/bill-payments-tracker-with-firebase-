@@ -41,6 +41,8 @@ const DisplayPayments = ( { transactionHistory, payeeId, deleteTransaction } ) =
             <div className={ style.transactionHistoryContainer }>
                 {
                     transactionHistory.map( payment => {
+                        //because Firebase doesn't save any 0 or null values
+                        //the .00 cents are added to ammounts that have empty cents
                         let paymentAmount = payment.ammount.toString( 10 )
                         if ( !paymentAmount.includes( '.' ) ) {
                             paymentAmount = `${ paymentAmount }.00`
