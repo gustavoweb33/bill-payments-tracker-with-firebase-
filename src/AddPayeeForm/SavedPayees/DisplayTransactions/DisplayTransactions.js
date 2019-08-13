@@ -3,24 +3,15 @@ import AddTransaction from './AddTransaction/AddTransaction';
 import style from './DisplayTransactions.module.css'
 import { FaTrash } from "react-icons/fa";
 
-const transactionHistoryLimit = ( history, more ) => {
-    const newHistory = [];
-    for ( let i = 0; i < more; i++ ) {
-        newHistory.push( history[ i ] );
-    }
-    return newHistory;
-}
-
-
-
 const DisplayPayments = ( { transactionHistory, payeeId, deleteTransaction } ) => {
-    const limit = transactionHistoryLimit( transactionHistory, 3 )
+
     const [ displayForm, setDisplay ] = useState( false );
-    // const [ newLimit, setLimit ] = useState( [] );
-    // if ( limit.length !== 3 ) {
-    //     setLimit( limit );
-    // }
-    // console.log( newLimit )
+    const [ length, setLength ] = useState( 3 )
+
+    const newHistory = [];
+    for ( let i = 0; i < length; i++ ) {
+        newHistory.push( transactionHistory[ i ] );
+    }
 
     let history = transactionHistory.length === 0
         ? <h3>No Transaction History</h3>
@@ -54,7 +45,7 @@ const DisplayPayments = ( { transactionHistory, payeeId, deleteTransaction } ) =
 
             <div className={ style.transactionHistoryContainer }>
                 {
-                    limit.map( payment => {
+                    newHistory.map( payment => {
                         //because Firebase doesn't save any 0 or null values
                         //the .00 cents are added to ammounts that have empty cents
                         let paymentAmount = payment.ammount.toString( 10 )
@@ -93,7 +84,7 @@ const DisplayPayments = ( { transactionHistory, payeeId, deleteTransaction } ) =
                     } )
                 }
             </div>
-            <button onClick={ () => transactionHistoryLimit( transactionHistory, 5 ) }>load mass</button>
+            <button onClick={ () => setLength(5) }>load more</button>
         </div>
     );
 }
