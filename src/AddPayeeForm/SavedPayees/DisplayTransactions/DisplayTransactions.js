@@ -10,6 +10,10 @@ const DisplayPayments = ( { transactionHistory, payeeId, deleteTransaction } ) =
 
     const newHistory = [];
     for ( let i = 0; i < length; i++ ) {
+        if ( transactionHistory[ i ] === undefined ) {
+            break;
+        }
+
         newHistory.push( transactionHistory[ i ] );
     }
 
@@ -34,8 +38,8 @@ const DisplayPayments = ( { transactionHistory, payeeId, deleteTransaction } ) =
                 </div>
 
                 {
-                    displayForm ?
-                        <AddTransaction
+                    displayForm
+                        ? <AddTransaction
                             payeeId={ payeeId }
                             transactionHistory={ transactionHistory }
                         />
@@ -84,7 +88,18 @@ const DisplayPayments = ( { transactionHistory, payeeId, deleteTransaction } ) =
                     } )
                 }
             </div>
-            <button onClick={ () => setLength(5) }>load more</button>
+            {
+                length >= transactionHistory.length
+                    ? <div className={ style.loadMoreContainer } >
+                        <p>No more transactions to load</p>
+                    </div>
+
+                    : <div className={ style.loadMoreContainer }>
+                        <button onClick={ () => setLength( length + 3 ) } className={ style.loadMore }>load more </button>
+                    </div>
+
+            }
+
         </div>
     );
 }

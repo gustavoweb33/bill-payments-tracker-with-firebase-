@@ -68,7 +68,7 @@ class AddTransaction extends Component {
 
         }
         else console.log( 'not a valid transaction' );
-        
+
     }
 
     render() {
@@ -80,8 +80,10 @@ class AddTransaction extends Component {
                     required minLength='5' maxLength='20' className={ style.referenceNumberInput }
                     value={ this.state.referenceNumber } onChange={ this.handleChange } />
                 {
-                    this.noDuplicateReferenceNums() ? '' :
-                        <p className={ style.duplicatesRefNums }> Reference number already exists </p>
+                    this.noDuplicateReferenceNums()
+                        ? ''
+                        : <p className={ style.duplicatesRefNums }> Reference number already exists </p>
+
                 }
 
                 <label className={ style.ammountTitle } htmlFor='tranAmmount'>  Ammount: </label>

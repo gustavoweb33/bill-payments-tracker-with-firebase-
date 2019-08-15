@@ -105,9 +105,9 @@ class AddPayee extends Component {
             <div>
                 <AddPayeeForm addItem={ this.addItem } payees={ this.state.payees } />
                 {
-                    this.state.payees.length === 0 ? <h2>...Loading</h2> :
-                        this.state.payees.map( ( payee, index ) => {
-
+                    this.state.payees.length === 0
+                        ? <h2>...Loading</h2>
+                        : this.state.payees.map( ( payee, index ) => {
                             return (
                                 <div key={ payee.id } className={ style.payeesAndTransactions }>
                                     <div className={ style.savedPayessContainer }>
