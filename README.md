@@ -5,6 +5,8 @@ With firebase as the database the user's data will be updated in real time.
 ![](images/payment-tracker1.png)
 ![](images/payment-tracker2.png)
 ![](images/payment-tracker3.png)
+![](images/payment-tracker4.png)
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
